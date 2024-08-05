@@ -23,7 +23,7 @@
  *  PS: I don't answer quickly.
  */
 
-package io.github.antoinepirlot.jetpack_libs.components
+package io.github.antoinepirlot.jetpack_libs.components.texts
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

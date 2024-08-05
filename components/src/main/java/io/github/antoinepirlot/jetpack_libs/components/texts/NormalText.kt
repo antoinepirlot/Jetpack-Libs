@@ -23,74 +23,44 @@
  *  PS: I don't answer quickly.
  */
 
-package io.github.antoinepirlot.jetpack_libs.components
+package io.github.antoinepirlot.jetpack_libs.components.texts
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.github.antoinepirlot.jetpack_libs.models.ScreenSizes
 
 /**
- * @author Antoine Pirlot on 10/04/2024
+ * @author Antoine Pirlot on 20/04/2024
  */
 
 @Composable
-fun Title(
+fun NormalText(
     modifier: Modifier = Modifier,
-    bottomPadding: Dp = 16.dp,
     text: String,
-    fontSize: TextUnit = 40.sp,
-    textAlign: TextAlign = TextAlign.Center,
-    fontWeight: FontWeight = FontWeight.Bold,
+    fontSize: TextUnit = TextUnit.Unspecified,
+    textAlign: TextAlign? = null,
     maxLines: Int = 1,
     overflow: TextOverflow = TextOverflow.Ellipsis
 ) {
-    val align: Alignment =
-        when (textAlign) {
-            TextAlign.Center -> Alignment.Center
-            TextAlign.Right -> Alignment.CenterEnd
-            else -> Alignment.CenterStart
-        }
-    val screenWidthDp = LocalConfiguration.current.screenWidthDp
-
-    val textStyle = TextStyle(
-        fontWeight = fontWeight,
-        textAlign = textAlign,
-        fontSize = if (screenWidthDp < ScreenSizes.VERY_VERY_SMALL)
+    val screenWidthDp: Int = LocalConfiguration.current.screenWidthDp
+    Text(
+        modifier = modifier,
+        text = text,
+        fontSize = if (fontSize != TextUnit.Unspecified && screenWidthDp < ScreenSizes.VERY_VERY_SMALL)
             fontSize / 2
-        else if (screenWidthDp < ScreenSizes.VERY_SMALL)
+        else if (fontSize == TextUnit.Unspecified && screenWidthDp < ScreenSizes.VERY_VERY_SMALL)
+            10.sp
+        else if (fontSize != TextUnit.Unspecified && screenWidthDp < ScreenSizes.VERY_SMALL)
             fontSize / 1.5
-        else fontSize
+        else fontSize,
+        textAlign = textAlign,
+        maxLines = maxLines,
+        overflow = overflow,
     )
-    Box(modifier = modifier.fillMaxWidth()) {
-        Text(
-            text = text,
-            modifier = Modifier
-                .align(align)
-                .padding(bottom = bottomPadding),
-            style = textStyle,
-            maxLines = maxLines,
-            overflow = overflow,
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun TitlePreview() {
-    Title(text = "Hello World!")
 }
