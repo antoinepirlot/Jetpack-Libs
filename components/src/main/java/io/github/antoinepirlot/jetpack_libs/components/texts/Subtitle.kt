@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
 /**
@@ -46,13 +47,14 @@ fun Subtitle(
     maxLines: Int = 1,
     color: Color = Color.Gray,
     fontWeight: FontWeight? = null,
+    fontSize: TextUnit = 15.sp,
     style: TextStyle = LocalTextStyle.current,
     overflow: TextOverflow = TextOverflow.Ellipsis) {
     Text(
         modifier = modifier,
         color = color,
         fontWeight = fontWeight,
-        fontSize = 15.sp,
+        fontSize = fontSize,
         text = text,
         style = style,
         maxLines = maxLines,
