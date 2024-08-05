@@ -33,7 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import io.github.antoinepirlot.jetpack_libs.models.ScreenSizes
+import io.github.antoinepirlot.jetpack_libs.components.models.ScreenSizes
 
 /**
  * @author Antoine Pirlot on 20/04/2024
