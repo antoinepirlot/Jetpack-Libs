@@ -1,15 +1,15 @@
 /*
- * This file is part of Jetpack-Libs.
+ * This file is part of Satunes.
  *
- *  Jetpack-Libs is free software: you can redistribute it and/or modify it under
+ *  Satunes is free software: you can redistribute it and/or modify it under
  *  the terms of the GNU General Public License as published by the Free Software Foundation,
  *  either version 3 of the License, or (at your option) any later version.
  *
- *  Jetpack-Libs is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  Satunes is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
  *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *  See the GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License along with Jetpack-Libs.
+ *  You should have received a copy of the GNU General Public License along with Satunes.
  *  If not, see <https://www.gnu.org/licenses/>.
  *
  *  **** INFORMATIONS ABOUT THE AUTHOR *****
@@ -17,13 +17,13 @@
  *  You find this original project on github.
  *
  *  My github link is: https://github.com/antoinepirlot
- *  This current project's link is: https://github.com/antoinepirlot/Jetpack-Libs
+ *  This current project's link is: https://github.com/antoinepirlot/Satunes
  *
  *  You can contact me via my email: pirlot.antoine@outlook.com
  *  PS: I don't answer quickly.
  */
 
-package io.github.antoinepirlot.jetpack_libs.components.texts
+package io.github.antoinepirlot.jetpack_libs.components
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,14 +33,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import io.github.antoinepirlot.jetpack_libs.components.models.ScreenSizes
+import io.github.antoinepirlot.jetpack_libs.models.ScreenSizes
 
 /**
  * @author Antoine Pirlot on 20/04/2024
  */
 
 @Composable
-fun NormalText(
+internal fun NormalText(
     modifier: Modifier = Modifier,
     text: String,
     fontSize: TextUnit = TextUnit.Unspecified,

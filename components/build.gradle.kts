@@ -1,16 +1,13 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
-val nameSpace = "io.github.antoinepirlot.jetpack_libs.components"
-
 android {
-    namespace = nameSpace
+    namespace = "io.github.antoinepirlot.jetpack_libs.components"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = nameSpace
         minSdk = 22
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -25,6 +22,12 @@ android {
             )
         }
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -36,9 +39,10 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.tooling.preview.android)
+    /**
+     * Base
+     */
+    val composeUiVersion = "1.6.8"
+    implementation("androidx.compose.material3:material3-android:1.2.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
 }
