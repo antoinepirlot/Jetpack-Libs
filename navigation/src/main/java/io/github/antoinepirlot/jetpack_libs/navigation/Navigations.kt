@@ -31,7 +31,7 @@ import androidx.navigation.NavHostController
  * @author Antoine Pirlot on 05/08/2024
  */
 
-private fun backToRootDestination(navController: NavHostController) {
+fun backToRootDestination(navController: NavHostController) {
     var currentRoute: String? = navController.currentBackStackEntry?.destination?.route
     while (currentRoute != null) {
         navController.popBackStack()
