@@ -23,7 +23,7 @@
  *  PS: I don't answer quickly.
  */
 
-package io.github.antoinepirlot.jetpack_libs.models
+package io.github.antoinepirlot.jetpack_libs.components.models
 
 /**
  * @author Antoine Pirlot on 14/05/2024
