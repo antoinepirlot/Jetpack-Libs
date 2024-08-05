@@ -25,10 +25,12 @@
 
 package io.github.antoinepirlot.jetpack_libs.components.texts
 
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 
@@ -41,12 +43,14 @@ fun Subtitle(
     modifier: Modifier = Modifier,
     text: String,
     maxLines: Int = 1,
+    style: TextStyle = LocalTextStyle.current,
     overflow: TextOverflow = TextOverflow.Ellipsis) {
     Text(
         modifier = modifier,
         color = Color.Gray,
         fontSize = 15.sp,
         text = text,
+        style = style,
         maxLines = maxLines,
         overflow = overflow
     )
