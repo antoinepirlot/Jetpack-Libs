@@ -21,6 +21,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        create("releaseTest") {
+            initWith(getByName("release"))
+        }
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
