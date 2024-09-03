@@ -62,7 +62,10 @@ fun ScrollBar(
     modifier: Modifier = Modifier,
     barWidth: Dp = 15.dp,
     color: Color = MaterialTheme.colorScheme.onPrimary,
-    shape: Shape = CircleShape
+    shape: Shape = CircleShape,
+    onPositionChanged:
+    /**The percentage is between 0f and 1f*/
+        (percentage: Float) -> Unit
 ) {
     val heightOfSliderButton: Dp = 150.dp
     var height: Dp = 0.dp
@@ -85,8 +88,12 @@ fun ScrollBar(
                     detectDragGestures { change: PointerInputChange, dragAmount: Offset ->
                         change.consume()
                         val newYPosition: Float = yPosition + dragAmount.y
-                        if (newYPosition >= 0f && newYPosition + heightOfSliderButton.toPx() <= height.value) {
+                        val heightOfSliderButtonInPx: Float = heightOfSliderButton.toPx()
+                        if (newYPosition >= 0f && newYPosition + heightOfSliderButtonInPx <= height.value) {
                             yPosition = newYPosition
+                            val percentage: Float =
+                                (yPosition + heightOfSliderButtonInPx) / height.value
+                            onPositionChanged(percentage)
                         }
                     }
                 }
@@ -100,5 +107,5 @@ fun ScrollBar(
 @Preview
 @Composable
 private fun ScrollBarPreview() {
-    ScrollBar()
+    ScrollBar(onPositionChanged = {})
 }
