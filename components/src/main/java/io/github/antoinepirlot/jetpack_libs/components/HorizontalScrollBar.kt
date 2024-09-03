@@ -58,7 +58,7 @@ import kotlin.math.roundToInt
  */
 
 @Composable
-fun ScrollBar(
+fun HorizontalScrollBar(
     modifier: Modifier = Modifier,
     barWidth: Dp = 15.dp,
     color: Color = MaterialTheme.colorScheme.onPrimary,
@@ -107,5 +107,5 @@ fun ScrollBar(
 @Preview
 @Composable
 private fun ScrollBarPreview() {
-    ScrollBar(onPositionChanged = {})
+    HorizontalScrollBar(onPositionChanged = {})
 }
