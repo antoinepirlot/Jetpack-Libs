@@ -57,15 +57,22 @@ import kotlin.math.roundToInt
  * @author Antoine Pirlot on 03/09/2024
  */
 
+/**
+ *
+ * Vertical Scroll Bar is a bar that can be scrolled vertically.
+ *
+ * @param modifier the [Modifier] of the view
+ * @param barWidth the width of the bar as [Dp]
+ * @param shape the [Shape] of the bar
+ * @param onPositionChanged The percentage is between 0f and 1f
+ */
 @Composable
-fun HorizontalScrollBar(
+fun VerticalScrollBar(
     modifier: Modifier = Modifier,
     barWidth: Dp = 15.dp,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     shape: Shape = CircleShape,
-    onPositionChanged:
-    /**The percentage is between 0f and 1f*/
-        (percentage: Float) -> Unit
+    onPositionChanged: (percentage: Float) -> Unit
 ) {
     val heightOfSliderButton: Dp = 150.dp
     var height: Dp = 0.dp
@@ -104,8 +111,8 @@ fun HorizontalScrollBar(
     }
 }
 
-@Preview
+@Preview()
 @Composable
 private fun ScrollBarPreview() {
-    HorizontalScrollBar(onPositionChanged = {})
+    VerticalScrollBar(onPositionChanged = {})
 }
