@@ -94,9 +94,12 @@ fun VerticalScrollBar(
                 .pointerInput(Unit) {
                     detectDragGestures { change: PointerInputChange, dragAmount: Offset ->
                         change.consume()
-                        val newYPosition: Float = yPosition + dragAmount.y
+                        var newYPosition: Float = yPosition + dragAmount.y
                         val heightOfSliderButtonInPx: Float = heightOfSliderButton.toPx()
-                        if (newYPosition >= 0f && newYPosition + heightOfSliderButtonInPx <= height.value) {
+                        if (newYPosition < 0f) {
+                            yPosition = 0f
+                            onPositionChanged(0f)
+                        } else if (newYPosition + heightOfSliderButtonInPx <= height.value) {
                             yPosition = newYPosition
                             val percentage: Float =
                                 (yPosition + heightOfSliderButtonInPx) / height.value
