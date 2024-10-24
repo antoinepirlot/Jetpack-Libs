@@ -74,7 +74,9 @@ fun VerticalScrollBar(
     shape: Shape = CircleShape,
     onPositionChanged: (percentage: Float) -> Unit
 ) {
-    val heightOfSliderButton: Dp = 150.dp
+    //TODO issue with scroll bar, it seems the center of scroll bar is always used as the top of scroll bar
+    // Find a way to fix it
+    val heightOfSliderButton: Dp = 50.dp
     var height: Dp = 0.dp
 
     Box(
