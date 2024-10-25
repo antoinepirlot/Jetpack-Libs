@@ -70,13 +70,13 @@ import kotlin.math.roundToInt
 fun VerticalScrollBar(
     modifier: Modifier = Modifier,
     barWidth: Dp = 15.dp,
+    barHeight: Dp = 150.dp,
     color: Color = MaterialTheme.colorScheme.onPrimary,
     shape: Shape = CircleShape,
     onPositionChanged: (percentage: Float) -> Unit
 ) {
     //TODO issue with scroll bar, it seems the center of scroll bar is always used as the top of scroll bar
     // Find a way to fix it
-    val heightOfSliderButton: Dp = 150.dp
     var height: Dp = 0.dp
 
     Box(
@@ -98,7 +98,7 @@ fun VerticalScrollBar(
                         change.consume()
                         var newYPosition: Float = yPosition + dragAmount.y
                         val percentage: Float =
-                            if (newYPosition <= 0f) 0f else newYPosition / (height.value - heightOfSliderButton.value)
+                            if (newYPosition <= 0f) 0f else newYPosition / (height.value - barHeight.value)
                         if (newYPosition <= 0f)
                             yPosition = 0f
                         else if (newYPosition <= height.value)
@@ -106,7 +106,7 @@ fun VerticalScrollBar(
                         onPositionChanged(percentage)
                     }
                 }
-                .height(heightOfSliderButton)
+                .height(barHeight)
                 .width(barWidth)
                 .border(width = barWidth, color = color, shape = shape)
         )
