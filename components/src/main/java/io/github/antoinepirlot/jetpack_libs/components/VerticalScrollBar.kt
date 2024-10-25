@@ -76,7 +76,7 @@ fun VerticalScrollBar(
 ) {
     //TODO issue with scroll bar, it seems the center of scroll bar is always used as the top of scroll bar
     // Find a way to fix it
-    val heightOfSliderButton: Dp = 50.dp
+    val heightOfSliderButton: Dp = 150.dp
     var height: Dp = 0.dp
 
     Box(
@@ -97,16 +97,13 @@ fun VerticalScrollBar(
                     detectDragGestures { change: PointerInputChange, dragAmount: Offset ->
                         change.consume()
                         var newYPosition: Float = yPosition + dragAmount.y
-                        val heightOfSliderButtonInPx: Float = heightOfSliderButton.toPx()
-                        if (newYPosition < 0f) {
+                        val percentage: Float =
+                            if (newYPosition <= 0f) 0f else newYPosition / (height.value - heightOfSliderButton.value)
+                        if (newYPosition <= 0f)
                             yPosition = 0f
-                            onPositionChanged(0f)
-                        } else if (newYPosition + heightOfSliderButtonInPx <= height.value) {
+                        else if (newYPosition <= height.value)
                             yPosition = newYPosition
-                            val percentage: Float =
-                                (yPosition + heightOfSliderButtonInPx) / height.value
-                            onPositionChanged(percentage)
-                        }
+                        onPositionChanged(percentage)
                     }
                 }
                 .height(heightOfSliderButton)
